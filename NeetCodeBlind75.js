@@ -57,6 +57,7 @@
 // console.log(twoSum([2, 7, 11, 15], 9)) // [0, 1]
 // console.log(twoSum([3, 2, 4], 6)) // [1, 2]
 // console.log(twoSum([3, 3], 6)) // [0, 1]
+// console.log(twoSum([3, 5, 7, 9, 11], 18)) // [2, 4]
 
 // // #4: Group Anagrams
 // const groupAnagrams = (strs) => {
@@ -82,3 +83,47 @@
 // console.log(groupAnagrams(['night', 'care', 'scare', 'race', 'bets', 'thing', 'best'])) // [['night', 'thing'], ['care', 'race'], ['scare'], ['bets', 'best']]
 // console.log(groupAnagrams([''])) // [['']]
 
+// // #5: Top K Frequent Elements
+// const topKFrequent = (nums, k) => {
+//   // assign variable 'count' set equal to empty object
+//   let count = {}
+//   // loop over each 'num' element of 'nums' array, check if key 'num' NOT in 'count' object, if no then add with value of 1, if yes then increment value by 1
+//   for (let num of nums) !count[num] ? count[num] = 1 : count[num] +=1
+//   // assign variable 'sortedArr' set equal to an array of 'count' object entries (each entry an array [key, value]) sorted by value in descending order
+//   let sortedArr = Object.entries(count).sort((a, b) => b[1] - a[1])
+//   // assign variable 'result' set equal to the first 'k' elements of 'sortedArr'
+//   let result = sortedArr.slice(0, k)
+//   // return map of 'result' containing key of each element (index 0) of result converted to integer
+//   return result.map(num => parseInt(num[0]))
+// }
+// console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2)) // [1, 2]
+// console.log(topKFrequent([3, 3, 3, 2, 1, 1], 2)) // [3, 1]
+// console.log(topKFrequent([1], 1)) // [1]
+
+// // #6: Product of Array Except Self
+// const productExceptSelf = (nums) => {
+//   // assign variable 'answer' set equal to empty array
+//   let answer = []
+//   // assign variable 'leftProduct' set equal to 1
+//   let leftProduct = 1
+//   // assign variable 'rightProduct' set equal to 1
+//   let rightProduct = 1
+//   // loop over each element of 'nums' array beginning at index 0
+//   for (let i = 0; i < nums.length; i++) {
+//     // set element of 'answer' array at current iteration index equal to 'leftProduct'
+//     answer[i] = leftProduct
+//     // update 'leftProduct' to it's current value times the current iteration element of 'nums' array
+//     leftProduct *= nums[i]
+//   }
+//   // loop over each element of 'nums' array beginning at the index before the last and moving to the left
+//   for (let i = nums.length - 2; i >= 0; i--) {
+//     // update 'rightProduct' to it's current value times the current iteration element of 'nums' array
+//     rightProduct *= nums[i + 1]
+//     // set element of 'answer' array at current iteration index equal to 'rightProduct'
+//     answer[i] *= rightProduct
+//   }
+//   // return 'answer' array
+//   return answer
+// }
+// console.log(productExceptSelf([1, 2, 3, 4])) // [24, 12, 8, 6]
+// console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0, 0, 9, 0, 0]
