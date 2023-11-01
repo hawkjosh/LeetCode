@@ -127,3 +127,76 @@
 // }
 // console.log(productExceptSelf([1, 2, 3, 4])) // [24, 12, 8, 6]
 // console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0, 0, 9, 0, 0]
+
+// // // #7: Encode and Decode Strings
+// const spyCode = () => {
+// 	const encode = (strs) =>
+// 		`${strs.map((str) => str.length).join('.')}$${strs
+// 			.map((str) =>
+// 				str
+// 					.split('')
+// 					.map((ch) => String.fromCharCode(ch.charCodeAt() + 5))
+// 					.join('')
+// 			)
+// 			.join('')}`
+// 	const decode = (str) => {
+// 		let strs = []
+// 		const wordChars = str.split(String.fromCharCode(36))[1].split('')
+// 		console.log(str.split(String.fromCharCode(36))[1].split(''))
+// 		str
+// 			.split(String.fromCharCode(36))[0]
+// 			.split('.')
+// 			.forEach((length) => strs.push(wordChars.splice(0, length)))
+// 		console.log(str.split(String.fromCharCode(36))[1].split('').splice(0, 4))
+// 		console.log(str.split(String.fromCharCode(36))[1].split('').splice(8))
+// 		return strs.map((word) =>
+// 			word.map((char) => String.fromCharCode(char.charCodeAt() - 5)).join('')
+// 		)
+// 	}
+// 	return { encode, decode }
+// }
+// console.log(spyCode().encode(['lint', 'code', 'love', 'you'])) // '4.4.4.3$qnsyhtijqt{j~tz'
+// console.log(spyCode().decode('4.4.4.3$qnsyhtijqt{j~tz')) // ['lint', 'code', 'love', 'you']
+// console.log(spyCode().encode(['we', 'say', ':', 'yes'])) // '2.3.1.3$|jxf~?~jx'
+// console.log(spyCode().decode('2.3.1.3$|jxf~?~jx')) // ['we', 'say', ':', 'yes']
+// console.log(spyCode().encode(['Go', 'big', 'orange!'])) // '2.3.7$Ltgnltwfslj&'
+// console.log(spyCode().decode('2.3.7$Ltgnltwfslj&')) // ['Go', 'big', 'orange!']
+
+// #8: Longest Consecutive Sequence
+// version below has O(n*log(n)) time complexity
+const longestConsecutive = (nums) => {
+	nums.sort((a, b) => a - b)
+	let countArr = [nums[0]]
+	let currMax = countArr.length
+	let absMax = 1
+	for (let i = 0; i < nums.length - 1; i++) {
+		if (nums[i + 1] !== nums[i] + 1) {
+			countArr = []
+			absMax = Math.max(currMax, absMax)
+		}
+		countArr.push(nums[i + 1])
+		currMax = countArr.length
+	}
+	absMax = Math.max(currMax, absMax)
+	return absMax
+}
+// alternate version below has O(n) time complexity
+// const longestConsecutive = (nums) => {
+// 	const numSet = new Set(nums)
+// 	let longestStreak = 0
+// 	for (const num of numSet) {
+// 		if (!numSet.has(num - 1)) {
+// 			let currentNum = num
+// 			let currentStreak = 1
+// 			while (numSet.has(currentNum + 1)) {
+// 				currentNum += 1
+// 				currentStreak += 1
+// 			}
+// 			longestStreak = Math.max(longestStreak, currentStreak)
+// 		}
+// 	}
+// 	return longestStreak
+// }
+// console.log(longestConsecutive([1, 2, 3, 4, 5])) // 5
+// console.log(longestConsecutive([100, 4, 200, 1, 3, 2])) // 4
+// console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1])) // 9

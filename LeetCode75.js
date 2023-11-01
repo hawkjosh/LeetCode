@@ -28,3 +28,5 @@
 // console.log(gcdOfStrings('ABCABC', 'ABC')) // 'ABC'
 // console.log(gcdOfStrings('ABABAB', 'ABAB')) // 'AB'
 // console.log(gcdOfStrings('LEET', 'CODE')) // ''
+
+// Kids With the Greates Number of Candies
