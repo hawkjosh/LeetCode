@@ -128,7 +128,7 @@
 // console.log(productExceptSelf([1, 2, 3, 4])) // [24, 12, 8, 6]
 // console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0, 0, 9, 0, 0]
 
-// // // #7: Encode and Decode Strings
+// // #7: Encode and Decode Strings
 // const spyCode = () => {
 // 	const encode = (strs) =>
 // 		`${strs.map((str) => str.length).join('.')}$${strs
@@ -142,13 +142,10 @@
 // 	const decode = (str) => {
 // 		let strs = []
 // 		const wordChars = str.split(String.fromCharCode(36))[1].split('')
-// 		console.log(str.split(String.fromCharCode(36))[1].split(''))
 // 		str
 // 			.split(String.fromCharCode(36))[0]
 // 			.split('.')
 // 			.forEach((length) => strs.push(wordChars.splice(0, length)))
-// 		console.log(str.split(String.fromCharCode(36))[1].split('').splice(0, 4))
-// 		console.log(str.split(String.fromCharCode(36))[1].split('').splice(8))
 // 		return strs.map((word) =>
 // 			word.map((char) => String.fromCharCode(char.charCodeAt() - 5)).join('')
 // 		)
@@ -162,41 +159,95 @@
 // console.log(spyCode().encode(['Go', 'big', 'orange!'])) // '2.3.7$Ltgnltwfslj&'
 // console.log(spyCode().decode('2.3.7$Ltgnltwfslj&')) // ['Go', 'big', 'orange!']
 
-// #8: Longest Consecutive Sequence
-// version below has O(n*log(n)) time complexity
-const longestConsecutive = (nums) => {
-	nums.sort((a, b) => a - b)
-	let countArr = [nums[0]]
-	let currMax = countArr.length
-	let absMax = 1
-	for (let i = 0; i < nums.length - 1; i++) {
-		if (nums[i + 1] !== nums[i] + 1) {
-			countArr = []
-			absMax = Math.max(currMax, absMax)
-		}
-		countArr.push(nums[i + 1])
-		currMax = countArr.length
-	}
-	absMax = Math.max(currMax, absMax)
-	return absMax
-}
-// alternate version below has O(n) time complexity
+// // #8: Longest Consecutive Sequence
 // const longestConsecutive = (nums) => {
+// 	// assign variable 'numSet' set equal to new Set construction of 'nums' array
 // 	const numSet = new Set(nums)
+// 	// assign variable 'longestStreak' set equal to 0
 // 	let longestStreak = 0
-// 	for (const num of numSet) {
+// 	// loop over each element 'num' of 'numSet'
+// 	for (let num of numSet) {
+// 		// check if 'numSet' does NOT contain element with value of current iteration 'num' minus one
 // 		if (!numSet.has(num - 1)) {
+// 			// if no then assign variable 'currentNum' set equal to current iteration 'num'
 // 			let currentNum = num
+// 			// if no then assign variable 'currentStreak' set equal to 1
 // 			let currentStreak = 1
+// 			// inner loop that conditionally checks if 'numset' contains element with value of 'currentNum' plus one
 // 			while (numSet.has(currentNum + 1)) {
+// 				// if yes then increment 'currentNum' and 'currentStreak' each by one
 // 				currentNum += 1
 // 				currentStreak += 1
 // 			}
+// 			// set 'longestStreak' to the max between it's current value and value of 'currentStreak'
 // 			longestStreak = Math.max(longestStreak, currentStreak)
 // 		}
 // 	}
+// 	// return 'longestStreak'
 // 	return longestStreak
 // }
 // console.log(longestConsecutive([1, 2, 3, 4, 5])) // 5
 // console.log(longestConsecutive([100, 4, 200, 1, 3, 2])) // 4
 // console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1])) // 9
+
+// // #9: Valid Palindrome
+// const isPalindrome = (s) => {
+// 	// change all uppercase letters to lowercase letters and remove all non-alphanumeric characters from 's'
+// 	s = s.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
+// 	// assign variable 'sReversed' set equal to reverse order of 's'
+// 	const sReversed = s.split('').reverse().join('')
+// 	// return boolean checking if 's' equals 'sReversed'
+// 	return s === sReversed
+// }
+// console.log(isPalindrome('A man, a plan, a canal: Panama')) // true
+// console.log(isPalindrome('race a car')) // false
+// console.log(isPalindrome(' ')) // true
+
+// #10: 3Sum
+const threeSum = (nums) => {
+	// sort 'nums' array in ascending order
+	nums.sort((a, b) => a - b)
+	// assign variable 'result' set equal to empty array
+	const result = []
+	// loop over all but last two elements in 'nums' array beginning at index 0
+	for (let i = 0; i < nums.length - 2; i++) {
+		// check if index is 0 or if index greater than 0 AND elements of 'nums' at current and previous index are not equal
+		if (i === 0 || (i > 0 && nums[i] !== nums[i - 1])) {
+			// assign variable 'left' set equal to i + 1 for the left pointer
+			let left = i + 1
+			// assign variable 'right' set equal to last index of 'nums' for the right pointer
+			let right = nums.length - 1
+			// assign variable 'target' set equal to negative the current iteration value for the target pointer
+			const target = -nums[i]
+			// begin while loop with condition 'left' less than 'right'
+			while (left < right) {
+				// check if sum of 'num' elements at 'left' and 'right' index equals 'target'
+				if (nums[left] + nums[right] === target) {
+					// if yes...
+					// push 'num' elements at 'left', 'right', and current iteration index to 'result' array
+					result.push(nums[i], nums[left], nums[right])
+					// increment 'left' by 1 while 'left' is less than 'right' AND 'nums' elements at 'left' and one more than 'left' are equal
+					while (left < right && nums[left] === nums[left + 1]) left++
+					// decrement 'right' by 1 while 'left' is less than 'right' AND 'nums' elements at 'right' and one less than 'right' are equal
+					while (left < right && nums[right] === nums[right - 1]) right--
+					// increment 'left' by 1
+					left++
+					// decrement 'right' by 1
+					right--
+					// if no then check if 'num' elements at 'left' and 'right' index less than 'target'
+				} else if (nums[left] + nums[right] < target) {
+					// if yes then increment 'left' by 1
+					left++
+				} else {
+					// if all above fails then decrement 'right' by 1
+					right --
+				}
+			}
+		}
+	}
+	// return 'result' array
+	return result
+}
+console.log(threeSum([-1, 0, 1, 2, -1, -4])) // [[-1, -1, 2], [-1, 0, 1]]
+console.log(threeSum([0, 1, 1])) // []
+console.log(threeSum([0, 0, 0])) // [[0, 0, 0]]

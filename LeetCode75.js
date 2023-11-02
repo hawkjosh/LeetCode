@@ -29,4 +29,95 @@
 // console.log(gcdOfStrings('ABABAB', 'ABAB')) // 'AB'
 // console.log(gcdOfStrings('LEET', 'CODE')) // ''
 
-// Kids With the Greates Number of Candies
+// // #3: Kids With the Greatest Number of Candies
+// const kidsWithCandies = (candies, extraCandies) => {
+//   // assign variable 'max' set equal to max value of 'candies' array
+//   const max = Math.max(...candies)
+//   // return map of 'candies' array with boolean value for each element plus 'extraCandies' compared to 'max'
+//   return candies.map(count => count + extraCandies >= max)
+// }
+// console.log(kidsWithCandies([2, 3, 5, 1, 3], 3)) // [true, true, true, false, true]
+// console.log(kidsWithCandies([4, 2, 1, 1, 2], 1)) // [true, false, false, false, false]
+// console.log(kidsWithCandies([12, 1, 12], 10)) // [true, false, true]
+
+// // #4: Can Place Flowers
+// const canPlaceFlowers = (fb, n) => {
+//   // assign variable 'openSpots' set equal to 0
+//   let openSpots = 0
+//   // loop over each element of 'fb' array beginning at index 0
+//   for (let i = 0; i < fb.length; i++) {
+//     // check if previous, current, and next element not equal to 1
+//     if (fb[i - 1] !== 1 && fb[i] !== 1 && fb [i + 1] !== 1) {
+//       // if true...
+//       // set current iteration element equal to 1
+//       fb[i] = 1
+//       // increment 'openSpots' by 1
+//       openSpots += 1
+//     }
+//   }
+//   // return boolean value of 'openSpots' greater than or equal to 'n'
+//   return openSpots >= n
+// }
+// console.log(canPlaceFlowers([1, 0, 0, 0, 1], 1)) // true
+// console.log(canPlaceFlowers([1, 0, 0, 0, 1], 2)) // false
+// console.log(canPlaceFlowers([1, 0, 0, 0, 0, 1], 2)) // false
+// console.log(canPlaceFlowers([1, 0, 0, 0, 0, 0, 1], 2)) // true
+// console.log(canPlaceFlowers([0, 0, 1, 0, 1], 1)) // true
+// console.log(canPlaceFlowers([0, 0, 0], 2)) // true
+// console.log(canPlaceFlowers([0], 1)) // true
+// console.log(canPlaceFlowers([1], 1)) // false
+
+// // #5: Reverse Vowels of a String
+// const reverseVowels = (s) => {
+//   // assign variable 'vowels' set equal to string containing lowercase and uppercase vowels
+//   const vowels = 'aeiouAEIOU'
+//   // assign variable 'sArr' set equal to 's' converted into an array for easier manipulation
+//   const sArr = [...s]
+//   // assign variable 'left' set equal to 0 for the left pointer
+//   let left = 0
+//   // assign variable 'right' set equal to last index of 'sArr' for the right pointer
+//   let right = sArr.length - 1
+//   // begin while loop with condition of 'left' less than 'right'
+//   while (left < right) {
+//     // start inner loop with condition of 'left' less than 'right' AND element of 'sArr' at 'left' index not a vowel
+//     while (left < right && vowels.indexOf(sArr[left]) === -1) {
+//       // if true then increment left by 1
+//       left++
+//     }
+//     // start inner loop with condition of 'left' less than 'right' AND element of 'sArr' at 'right' index not a vowel
+//     while (left < right && vowels.indexOf(sArr[right]) === -1) {
+//       // if true then decrement right by 1
+//       right--
+//     }
+//     // when conditions above are false...
+//     // swap elements at 'left' and 'right' index
+//     [sArr[left], sArr[right]] = [sArr[right], sArr[left]]
+//     // increment 'left' by 1
+//     left++
+//     // decrement 'right' by 1
+//     right--
+//   }
+//   // return joined 'sArr' to convert back to string
+//   return sArr.join('')
+// }
+// console.log(reverseVowels('hello')) // holle
+// console.log(reverseVowels('leetcode')) // 'leotcede'
+
+// // #5: Reverse Words in a String
+// const reverseWords = (s) => {
+// 	// assign variable 'sArr' set equal to empty array
+// 	const sArr = []
+//   // trim whitespace from 's' on left and right sides
+// 	s.trim()
+//     // convert 's' into array split by spaces
+// 		.split(' ')
+//     // reverse order of the array
+// 		.reverse()
+//     // push each element in array not equal to empty string to 'sArr'
+// 		.forEach((el) => el !== '' && sArr.push(el))
+//   // return joined 'sArr' to convert back to string
+// 	return sArr.join(' ')
+// }
+// console.log(reverseWords('the sky is blue')) // 'blue is sky the'
+// console.log(reverseWords('  hello world  ')) // 'world hello'
+// console.log(reverseWords('a good   example')) // 'example good a'
