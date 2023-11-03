@@ -103,7 +103,7 @@
 // console.log(reverseVowels('hello')) // holle
 // console.log(reverseVowels('leetcode')) // 'leotcede'
 
-// // #5: Reverse Words in a String
+// // #6: Reverse Words in a String
 // const reverseWords = (s) => {
 // 	// assign variable 'sArr' set equal to empty array
 // 	const sArr = []
@@ -121,3 +121,39 @@
 // console.log(reverseWords('the sky is blue')) // 'blue is sky the'
 // console.log(reverseWords('  hello world  ')) // 'world hello'
 // console.log(reverseWords('a good   example')) // 'example good a'
+
+// // #7: Product of Array Except Self
+// const productExceptSelf = (nums) => {
+//   // assign variable 'answer' set equal to empty array
+//   let answer = []
+//   // assign variable 'leftProduct' set equal to 1
+//   let leftProduct = 1
+//   // assign variable 'rightProduct' set equal to 1
+//   let rightProduct = 1
+//   // loop over each element of 'nums' array beginning at index 0
+//   for (let i = 0; i < nums.length; i++) {
+//     // set element of 'answer' array at current iteration index equal to 'leftProduct'
+//     answer[i] = leftProduct
+//     // update 'leftProduct' to it's current value times the current iteration element of 'nums' array
+//     leftProduct *= nums[i]
+//   }
+//   // loop over each element of 'nums' array beginning at the index before the last and moving to the left
+//   for (let i = nums.length - 2; i >= 0; i--) {
+//     // update 'rightProduct' to it's current value times the current iteration element of 'nums' array
+//     rightProduct *= nums[i + 1]
+//     // set element of 'answer' array at current iteration index equal to 'rightProduct'
+//     answer[i] *= rightProduct
+//   }
+//   // return 'answer' array
+//   return answer
+// }
+// console.log(productExceptSelf([1, 2, 3, 4])) // [24, 12, 8, 6]
+// console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0, 0, 9, 0, 0]
+
+// #8: Increasing Triplet Subsequence
+const increasingTriplet = (nums) => {
+
+}
+console.log(increasingTriplet([1, 2, 3, 4, 5])) // true
+console.log(increasingTriplet([5, 4, 3, 2, 1])) // false
+console.log(increasingTriplet([2, 1, 5, 0, 4, 6])) // true

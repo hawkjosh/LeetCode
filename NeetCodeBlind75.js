@@ -203,51 +203,62 @@
 // console.log(isPalindrome('race a car')) // false
 // console.log(isPalindrome(' ')) // true
 
-// #10: 3Sum
-const threeSum = (nums) => {
-	// sort 'nums' array in ascending order
-	nums.sort((a, b) => a - b)
-	// assign variable 'result' set equal to empty array
-	const result = []
-	// loop over all but last two elements in 'nums' array beginning at index 0
-	for (let i = 0; i < nums.length - 2; i++) {
-		// check if index is 0 or if index greater than 0 AND elements of 'nums' at current and previous index are not equal
-		if (i === 0 || (i > 0 && nums[i] !== nums[i - 1])) {
-			// assign variable 'left' set equal to i + 1 for the left pointer
-			let left = i + 1
-			// assign variable 'right' set equal to last index of 'nums' for the right pointer
-			let right = nums.length - 1
-			// assign variable 'target' set equal to negative the current iteration value for the target pointer
-			const target = -nums[i]
-			// begin while loop with condition 'left' less than 'right'
-			while (left < right) {
-				// check if sum of 'num' elements at 'left' and 'right' index equals 'target'
-				if (nums[left] + nums[right] === target) {
-					// if yes...
-					// push 'num' elements at 'left', 'right', and current iteration index to 'result' array
-					result.push(nums[i], nums[left], nums[right])
-					// increment 'left' by 1 while 'left' is less than 'right' AND 'nums' elements at 'left' and one more than 'left' are equal
-					while (left < right && nums[left] === nums[left + 1]) left++
-					// decrement 'right' by 1 while 'left' is less than 'right' AND 'nums' elements at 'right' and one less than 'right' are equal
-					while (left < right && nums[right] === nums[right - 1]) right--
-					// increment 'left' by 1
-					left++
-					// decrement 'right' by 1
-					right--
-					// if no then check if 'num' elements at 'left' and 'right' index less than 'target'
-				} else if (nums[left] + nums[right] < target) {
-					// if yes then increment 'left' by 1
-					left++
-				} else {
-					// if all above fails then decrement 'right' by 1
-					right --
-				}
-			}
-		}
-	}
-	// return 'result' array
-	return result
+// // #10: 3Sum
+// const threeSum = (nums) => {
+// 	// assign variable 'result' set equal to empty array
+// 	const result = []
+// 	// sort 'nums' array in ascending order
+// 	nums.sort((a, b) => a - b)
+// 	// loop over all elements in 'nums' array beginning at index 0
+// 	for (let i = 0; i < nums.length; i++) {
+// 		// assign variable 'a' set equal to 'nums' element at index 'i'
+// 		const a = nums[i]
+// 		// break if 'a' greater than 0
+// 		if (a > 0) break
+// 		// continue is 'i' greater than 0 AND 'a' previous element in 'nums' array
+// 		if (i > 0 && a === nums[i - 1]) continue
+// 		// assign variable 'l' set equal to i + 1 for the left pointer
+// 		let l = i + 1
+// 		// assign variable 'r' set equal to last index of 'nums' for the right pointer
+// 		let r = nums.length - 1
+// 		// begin while loop with condition of 'l' less than 'r'
+// 		while (l < r) {
+// 			// assign variable 'threeSum' set equal to sum of 'a' and 'num' elements at 'l' and 'r' index
+// 			const threeSum = a + nums[l] + nums[r]
+// 			// check if 'threeSum' greater than 0
+// 			if (threeSum > 0) {
+// 				// if yes then decrement 'r' by 1
+// 				r--
+// 				// check if 'threeSum' less than 0
+// 			} else if (threeSum < 0) {
+// 				// if yes then increment 'l' by 1
+// 				l++
+// 				// if above checks fail then...
+// 			} else {
+// 				// push 'a' and 'num' elements at 'l' and 'r' index to 'result' array
+// 				result.push([a, nums[l], nums[r]])
+// 				// increment 'l' by 1
+// 				l++
+// 				// decrement 'r' by 1
+// 				r--
+// 				// inner while loop with condition 'num' elements at index 'l' and previous to 'l' equal AND 'l' less than 'r'
+// 				while (nums[l] === nums[l - 1] && l < r) {
+// 					// increment 'l' by 1
+// 					l++
+// 				}
+// 			}
+// 		}
+// 	}
+// 	// return 'result' array
+// 	return result
+// }
+// console.log(threeSum([-1, 0, 1, 2, -1, -4])) // [[-1, -1, 2], [-1, 0, 1]]
+// console.log(threeSum([0, 1, 1])) // []
+// console.log(threeSum([0, 0, 0])) // [[0, 0, 0]]
+
+// #11: Container With Most Water
+const maxArea = (height) => {
+
 }
-console.log(threeSum([-1, 0, 1, 2, -1, -4])) // [[-1, -1, 2], [-1, 0, 1]]
-console.log(threeSum([0, 1, 1])) // []
-console.log(threeSum([0, 0, 0])) // [[0, 0, 0]]
+console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
+console.log(maxArea([1, 1])) // 1
