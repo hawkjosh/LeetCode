@@ -256,9 +256,29 @@
 // console.log(threeSum([0, 1, 1])) // []
 // console.log(threeSum([0, 0, 0])) // [[0, 0, 0]]
 
-// #11: Container With Most Water
-const maxArea = (height) => {
-
-}
-console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
-console.log(maxArea([1, 1])) // 1
+// // #11: Container With Most Water
+// const maxArea = (height) => {
+// 	// assign variable 'l' set equal to zero for left pointer
+// 	let l = 0
+// 	// assign variable 'r' set equal to last index of 'height' for right pointer
+// 	let r = height.length - 1
+// 	// assign variable 'maxArea' set equal to 0
+// 	let maxArea = 0
+// 	// begin while loop with condition 'l' less than 'r'
+// 	while (l < r) {
+// 		// assign variable 'currWidth' set equal to difference between 'r' and 'l'
+// 		const currWidth = r - l
+// 		// assign variable 'currHeigh' set equal to max of 'height' elements at index 'l' and 'r'
+// 		const currHeight = Math.min(height[l], height[r])
+// 		// assign variable 'currArea' set equal to product of 'currWidth' and 'currHeight'
+// 		const currArea = currWidth * currHeight
+// 		// update 'maxArea' to max of it's current value and 'currArea'
+// 		maxArea = Math.max(maxArea, currArea)
+// 		// if element of 'height' at index 'l' less than at index 'r', increment 'l' by 1, else decrement 'r' by 1
+// 		height[l] < height[r] ? l++ : r--
+// 	}
+// 	// return 'maxArea'
+// 	return maxArea
+// }
+// console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
+// console.log(maxArea([1, 1])) // 1

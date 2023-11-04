@@ -150,10 +150,65 @@
 // console.log(productExceptSelf([1, 2, 3, 4])) // [24, 12, 8, 6]
 // console.log(productExceptSelf([-1, 1, 0, -3, 3])) // [0, 0, 9, 0, 0]
 
-// #8: Increasing Triplet Subsequence
-const increasingTriplet = (nums) => {
+// // #8: Increasing Triplet Subsequence
+// const increasingTriplet = (nums) => {
+//   // assign variable 'first' set equal to Infinity
+//   let first = Infinity
+//   // assign variable 'second' set equal to Infinity
+//   let second = Infinity
+//   // loop over each element of 'nums'
+//   for (let num of nums) {
+//     // if current iteration element 'num' less than 'first'
+//     if (num <= first) {
+//       // update 'first' to 'num'
+//       first = num
+//       // else if current iteration element 'num' less than 'second'
+//     } else if (num <= second) {
+//       // update 'second' to 'num'
+//       second = num
+//       // else return true
+//     } else {
+//       return true
+//     }
+//   }
+//   // return false
+//   return false
+// }
+// console.log(increasingTriplet([1, 2, 3, 4, 5])) // true
+// console.log(increasingTriplet([5, 4, 3, 2, 1])) // false
+// console.log(increasingTriplet([2, 1, 5, 0, 4, 6])) // true
 
-}
-console.log(increasingTriplet([1, 2, 3, 4, 5])) // true
-console.log(increasingTriplet([5, 4, 3, 2, 1])) // false
-console.log(increasingTriplet([2, 1, 5, 0, 4, 6])) // true
+// // #9: String Compression
+// const compress = (chars) => {
+//   // assign variables 'read' and 'write' each set equal to 0
+// 	let read = 0, write = 0
+//   // begin while loop with condition 'read' less than length of 'chars' array
+// 	while (read < chars.length) {
+//     // assign variable 'char' set equal to 'chars' array value at index 'read'
+// 		let char = chars[read]
+//     // assign variable 'count' set equal to 0
+// 		let count = 0
+//     // start inner loop with condition 'read' less than length of 'chars' array AND 'char' equal to array value at index 'read'
+// 		while (read < chars.length && chars[read] === char) {
+//       // increment 'read' by 1
+// 			read++
+//       // increment 'count' by 1
+// 			count++
+// 		}
+//     // update value of 'chars' array at index 'write' incremented by 1 to 'char'
+// 		chars[write++] = char
+//     // check if 'count' greater than 1
+// 		if (count > 1) {
+//       // if yes...
+//       // assign variable 'countStr' set equal to 'count' converted into string
+// 			const countStr = count.toString()
+//       // loop over each element 'digit' of 'countStr' and update value of 'chars' array at index 'write' incremented by 1 to 'digit'
+// 			for (let digit of countStr) chars[write++] = digit
+// 		}
+// 	}
+//   // return 'write'
+// 	return write
+// }
+// console.log(compress(['a', 'a', 'b', 'b', 'c', 'c', 'c'])) // 6
+// console.log(compress(['a'])) // 1
+// console.log(compress(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'])) // 4
