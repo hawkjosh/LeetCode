@@ -212,3 +212,117 @@
 // console.log(compress(['a', 'a', 'b', 'b', 'c', 'c', 'c'])) // 6
 // console.log(compress(['a'])) // 1
 // console.log(compress(['a', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b'])) // 4
+
+// // #10: Move Zeroes
+// const moveZeroes = (nums) => {
+//   const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]
+//   // assign left pointer i and right pointer j
+//   let i = 0, j = i + 1
+//   // begin iteration loop while right pointer is less than length of nums array
+//   while (j < nums.length) {
+//     // check if value of nums[i] NOT equal to 0
+//     if (nums[i] !== 0) {
+//       // if nums[i] NOT equal to 0, increment both left and right pointers by 1
+//       i++
+//       j++
+//     } else {
+//       // if nums[i] is equal to 0, check if value of nums[j] NOT equal to 0
+//       if (nums[j] !== 0) {
+//         // if nums[j] NOT equal to 0, swap values of nums[i] and nums[j] and increment left pointer by 1
+//         swap(nums, i, j)
+//         i++
+//       }
+//       // if nums[j] is equal to 0, increment right pointer by 1
+//       j++
+//     }
+//   }
+//   // return nums array
+//   return nums
+// }
+// console.log(moveZeroes([0, 1, 0, 3, 12])) // [1, 3, 12, 0, 0]
+// console.log(moveZeroes([0])) // [0]
+// console.log(moveZeroes([0, 0, 1])) // [1, 0, 0]
+
+// // #11: Is Subsequence
+// const isSubsequence = (s, t) => {
+//   // assign variables i and j for left and right pointers
+//   let i = 0, j = 0
+//   // begin loop while right pointer less than length of t
+//   while (j < t.length) {
+//     // if char of s NOT equal to char of t
+//     if (s[i] !== t[j]) {
+//       // increment j by 1
+//       j++
+//       // if char of s equals char of t
+//     } else {
+//       // increment both i and j by 1
+//       i++
+//       j++
+//     }
+//   }
+//   // return true if i equals length of s, else return false
+//   return i === s.length ? true : false
+// }
+// console.log(isSubsequence('abc', 'cab')) // false
+// console.log(isSubsequence('abc', 'abc')) // true
+// console.log(isSubsequence('abc', 'ahbgdc')) // true
+// console.log(isSubsequence('axc', 'ahbgdc')) // false
+// console.log(isSubsequence('', '')) // true
+// console.log(isSubsequence('', 'xyz')) // true
+
+// // #12: Container With Most Water
+// const maxArea = (height) => {
+// 	// assign variable 'l' set equal to zero for left pointer
+// 	let l = 0
+// 	// assign variable 'r' set equal to last index of 'height' for right pointer
+// 	let r = height.length - 1
+// 	// assign variable 'maxArea' set equal to 0
+// 	let maxArea = 0
+// 	// begin while loop with condition 'l' less than 'r'
+// 	while (l < r) {
+// 		// assign variable 'currWidth' set equal to difference between 'r' and 'l'
+// 		const currWidth = r - l
+// 		// assign variable 'currHeigh' set equal to max of 'height' elements at index 'l' and 'r'
+// 		const currHeight = Math.min(height[l], height[r])
+// 		// assign variable 'currArea' set equal to product of 'currWidth' and 'currHeight'
+// 		const currArea = currWidth * currHeight
+// 		// update 'maxArea' to max of it's current value and 'currArea'
+// 		maxArea = Math.max(maxArea, currArea)
+// 		// if element of 'height' at index 'l' less than at index 'r', increment 'l' by 1, else decrement 'r' by 1
+// 		height[l] < height[r] ? l++ : r--
+// 	}
+// 	// return 'maxArea'
+// 	return maxArea
+// }
+// console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
+// console.log(maxArea([1, 1])) // 1
+
+// // #13: Max Number of K-Sum Pairs
+// const maxOperations = (nums, k) => {
+//   // assign variable numsMap to keep track of frequency of numbers in nums array (key = numbers, value = frequency)
+//   const numsMap = new Map()
+//   // assign variable count set equal to 0 to hold our total operations
+//   let count = 0
+//   // begin for loop over each element num of nums array
+//   for (let num of nums) {
+//     // assign variable complement set equal to difference of k and current iteration num
+//     const complement = k - num
+//     // if numsMap has key of complement with value greater than 0...
+//     if (numsMap.has(complement) && numsMap.get(complement) > 0) {
+//       // increment count by 1, decrease value by 1
+//       count += 1
+//       numsMap.set(complement, numsMap.get(complement) - 1)
+//       // if numsMap does NOT have key of complement with value greater than 0...
+//     } else {
+//       // add key of num to numsMap, set value to current value plus one (if already exists) otherwise 0 plus 1
+//       numsMap.set(num, (numsMap.get(num) || 0) + 1)
+//     }
+//   }
+//   // return count
+//   return count
+// }
+// console.log(maxOperations([1, 2, 3, 4], 5)) // 2
+// console.log(maxOperations([3, 1, 3, 4, 3], 6)) // 1
+// console.log(maxOperations([2, 2, 2, 3, 1, 1, 4, 1], 4)) // 2
+// console.log(maxOperations([5, 6, 2, 2, 2, 3, 1, 1, 4, 1], 4)) // 2
+// console.log(maxOperations([4, 4, 1, 3, 1, 3, 2, 2, 5, 5, 1, 5, 2, 1, 2, 3, 5, 4], 2)) // 2
