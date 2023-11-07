@@ -282,3 +282,76 @@
 // }
 // console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
 // console.log(maxArea([1, 1])) // 1
+
+// // BONUS: Valid Sudoku
+// const isValidSudoku = (board) => {
+//   // begin for loop at i = 0 while i less than 9 and incrementing by 1 each iteration
+//   for (let i = 0; i < 9; i++) {
+//     // assign variables row, col, and box each set equal to a new Set()
+//     let row = new Set(), col = new Set(), box = new Set()
+//     // begin nested for loop at j = 0 while j less than 9 and incrementing by 1 each iteration
+//     for (let j = 0; j < 9; j++) {
+//       // assign variables _row set equal to board[i][j], _col set equal to board[j][i], and _box set equal to board[<see math ↓>][<see math ↓>]
+//       let _row = board[i][j], _col = board[j][i], _box = board[3 * Math.floor(i / 3) + Math.floor(j / 3)][3 * (i % 3) + (j % 3)]
+//       // if _row NOT equal to '.'
+//       if (_row != '.') {
+//         // return false if the set row already has _row, else add _row to the set row
+//         if (row.has(_row)) return false
+//         row.add(_row)
+//       }
+//       // if _col NOT equal to '.'
+//       if (_col != '.') {
+//         // return false if the set col already has _col, else add _col to the set col
+//         if (col.has(_col)) return false
+//         col.add(_col)
+//       }
+//       // if _box NOT equal to '.'
+//       if (_box != '.') {
+//         // return false if the set box already has _box, else add _box to the set box
+//         if (box.has(_box)) return false
+//         box.add(_box)
+//       }
+//     }
+//   }
+//   // return true if everything else above passes
+//   return true
+// }
+// console.log(
+// 	isValidSudoku([
+// 		['5', '3', '.', '.', '7', '.', '.', '.', '.'],
+// 		['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+// 		['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+// 		['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+// 		['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+// 		['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+// 		['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+// 		['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+// 		['.', '.', '.', '.', '8', '.', '.', '7', '9'],
+// 	])
+// ) // true
+// console.log(
+// 	isValidSudoku([
+// 		['8', '3', '.', '.', '7', '.', '.', '.', '.'],
+// 		['6', '.', '.', '1', '9', '5', '.', '.', '.'],
+// 		['.', '9', '8', '.', '.', '.', '.', '6', '.'],
+// 		['8', '.', '.', '.', '6', '.', '.', '.', '3'],
+// 		['4', '.', '.', '8', '.', '3', '.', '.', '1'],
+// 		['7', '.', '.', '.', '2', '.', '.', '.', '6'],
+// 		['.', '6', '.', '.', '.', '.', '2', '8', '.'],
+// 		['.', '.', '.', '4', '1', '9', '.', '.', '5'],
+// 		['.', '.', '.', '.', '8', '.', '.', '7', '9'],
+// 	])
+// ) // false
+// console.log(
+// 	isValidSudoku([
+// 		['.', '.', '4', '.', '.', '.', '6', '3', '.'],
+// 		['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+// 		['5', '.', '.', '.', '.', '.', '.', '9', '.'],
+// 		['.', '.', '.', '5', '6', '.', '.', '.', '.'],
+// 		['4', '.', '3', '.', '.', '.', '.', '.', '1'],
+// 		['.', '.', '.', '7', '.', '.', '.', '.', '.'],
+// 		['.', '.', '.', '5', '.', '.', '.', '.', '.'],
+// 		['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+// 		['.', '.', '.', '.', '.', '.', '.', '.', '.'],
+// 	])
+// ) // false
