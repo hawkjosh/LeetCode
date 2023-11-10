@@ -283,6 +283,32 @@
 // console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
 // console.log(maxArea([1, 1])) // 1
 
+// // #12: Best Time to Buy and Sell Stock
+// const maxProfit = (prices) => {
+//   // assign variable 'max' set equal to 0 to hold maximum profit amount
+//   let max = 0
+//   // assign variable minPrice set equal to first price of 'prices' array
+//   let minPrice = prices[0]
+//   // begin for loop at index 1 while index less than length of 'prices' array, incrementing by 1 each iteration
+//   for (let i = 1; i < prices.length; i++) {
+//     // conditional to check if current iteration price less than 'minPrice'
+//     if (prices[i] < minPrice) {
+//       // if yes, update 'minPrice' to current iteration price
+//       minPrice = prices[i]
+//       // if no...
+//     } else {
+//       // assign variable 'check' set equal to difference of current iteration price and 'minPrice'
+//       let check = prices[i] - minPrice
+//       // update 'max' to maximum value between current 'max' and 'check'
+//       max = Math.max(max, check)
+//     }
+//   }
+//   // return 'max'
+//   return max
+// }
+// console.log(maxProfit([7, 1, 5, 3, 6, 4])) // 5
+// console.log(maxProfit([7, 6, 5, 3, 1])) // 0
+
 // // BONUS: Valid Sudoku
 // const isValidSudoku = (board) => {
 //   // begin for loop at i = 0 while i less than 9 and incrementing by 1 each iteration

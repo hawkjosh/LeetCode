@@ -343,7 +343,7 @@
 //   // begin for loop at index 'k' while index less than length of 'nums' array and incrementing by 1 each iteration
 //   for (let i = k; i < nums.length; i++) {
 //     // update 'sum' value by removing first element and adding next element of each iteration
-//     sum = sum - nums[i - k] + nums [i]
+//     sum = sum - nums[i - k] + nums[i]
 //     // update 'maxSum' value to be maximum of current 'maxSum' and newly calculated 'sum'
 //     maxSum = Math.max(maxSum, sum)
 //   }
@@ -354,3 +354,29 @@
 // console.log(findMaxAverage([5], 1)) // 5
 // console.log(findMaxAverage([0, 1, 1, 3, 3], 4)) // 2
 // console.log(findMaxAverage([], 3)) // 0
+
+// // #15: Maximum Number of Vowels in a Substring of Given Length
+// const maxVowels = (s, k) => {
+//   // assign variable 'numArr' set equal to empty array to hold numeric values of characters
+//   let numArr = []
+//   // loop over 'char' of 's' and push 1 if vowel or 0 if not to 'numArr'
+//   for (let char of s) ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(char) ? numArr.push(1) : numArr.push(0)
+//   // assign variable 'count' set equal to 0 to hold initial count of vowels in 'k' range
+//   let count = 0
+//   // begin for loop to add values of 'numArr' from index 0 to index 'k'
+//   for (let i = 0; i < k; i++) count += numArr[i]
+//   // assign variable 'maxCount' set equal to 'count'
+//   let maxCount = count
+//   // begin for loop at index 'k' while index less than length of 'numArr' incrementing by 1 each iteration
+//   for (let i = k; i < numArr.length; i++) {
+//     // update 'count' to sum of next 'k' values in 'numArr' by removing previous element and adding next
+//     count = count - numArr[i - k] + numArr[i]
+//     // update 'maxCount' to maximum value between current 'maxCount' and newly calculated 'count'
+//     maxCount = Math.max(maxCount, count)
+//   }
+//   // return 'maxCount'
+//   return maxCount
+// }
+// console.log(maxVowels("abciiidef", 3)) // 3
+// console.log(maxVowels("aeiou", 2)) // 2
+// console.log(maxVowels("leetcode", 3)) // 2
