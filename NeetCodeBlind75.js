@@ -283,6 +283,34 @@
 // console.log(maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])) // 49
 // console.log(maxArea([1, 1])) // 1
 
+// // #12: Maximum Average Subarray
+// const findMaxAverage = (nums, k) => {
+//   // short circuit to check 'nums' length equal to 0 and return 0
+//   if (nums.length === 0) return 0
+//   // assign variable 'sum' set equal to 0
+//   let sum = 0
+//   // begin for loop at index 0 while index less than 'k' and incrementing by 1 each iteration
+//   for (let i = 0; i < k; i++) {
+//     // update 'sum' value to total sum of first 'k' elements of 'nums' array
+//     sum += nums[i]
+//   }
+//   // assign variable 'maxSum' set equal to 'sum' value just calculated
+//   let maxSum = sum
+//   // begin for loop at index 'k' while index less than length of 'nums' array and incrementing by 1 each iteration
+//   for (let i = k; i < nums.length; i++) {
+//     // update 'sum' value by removing first element and adding next element of each iteration
+//     sum = sum - nums[i - k] + nums [i]
+//     // update 'maxSum' value to be maximum of current 'maxSum' and newly calculated 'sum'
+//     maxSum = Math.max(maxSum, sum)
+//   }
+//   // return 'maxSum' divide by 'k' to get maximum average
+//   return maxSum / k
+// }
+// console.log(findMaxAverage([1, 12, -5, -6, 50, 3], 4)) // 12.75
+// console.log(findMaxAverage([5], 1)) // 5
+// console.log(findMaxAverage([0, 1, 1, 3, 3], 4)) // 2
+// console.log(findMaxAverage([], 3)) // 0
+
 // // BONUS: Valid Sudoku
 // const isValidSudoku = (board) => {
 //   // begin for loop at i = 0 while i less than 9 and incrementing by 1 each iteration
