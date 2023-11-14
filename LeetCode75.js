@@ -380,3 +380,65 @@
 // console.log(maxVowels("abciiidef", 3)) // 3
 // console.log(maxVowels("aeiou", 2)) // 2
 // console.log(maxVowels("leetcode", 3)) // 2
+
+// #16: Max Consecutive Ones III
+// const longestOnes = (nums, k) => {
+//   // assign variables 'start', 'result', 'count' each set to 0
+//   let start = 0, result = 0, count = 0
+//   // loop over 'nums' from index 0 incrementing by 1 each iteration
+//   for (let i = 0; i < nums.length; i++) {
+//     // if 'nums' value at index 'i' is 0, increment 'count' by 1
+//     if (!nums[i]) count++
+//     while (count > k) {
+//       // while 'count' greater than 'k' if 'nums' value at index 'start' is 0, decrement count by 1
+//       if (!nums[start]) count--
+//       // increment 'start' by 1
+//       start++
+//     }
+//     // set 'result' to max between current 'result' and 'i + 1 - start'
+//     result = Math.max(result, (i + 1 - start))
+//   }
+//   // return result
+//   return result
+// }
+// console.log(longestOnes([1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0], 2)) // 6
+// console.log(longestOnes([0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1], 3)) // 10
+
+// #17: Longest Subarray of 1's After Deleting One Element
+// const longestSubarray = (nums) => {
+//   // short circuit to check for 'nums' array with no 1's
+//   if (!nums.includes(1)) return 0
+//   // assign variables 'count' set to 0 and 'arr' set to empty array
+//   let count = 0, arr = []
+//   // loop over 'nums' from index 0, incrementing index by 1 each iteration
+//   for (let i =0; i < nums.length; i++) {
+//     if (nums[i] === 1) {
+//       // if 'nums' value at index 'i' is 1, increment count by 1
+//       count++
+//     } else {
+//       // otherwise push 'count' to 'arr' and set 'count' to 0
+//       arr.push(count)
+//       count = 0
+//     }
+//   }
+//   if (count > 0) {
+//     // if 'count' greater than 0, push 'count' to 'arr'
+//     arr.push(count)
+//   }
+//   // if length of 'nums' array is 'count', return 1 less than 'count'
+//   if (nums.length === count) return count - 1
+//   // assign variable 'result' set to sum of 'arr' values at index 0 and 1
+//   let result = arr[0] + arr[1]
+//   // loop over 'arr' from index 1, incrementing index by 1 each iteration
+//   for (let j = 1; j < arr.length - 1; j++) {
+//     if (arr[j] + arr[j + 1] > result) {
+//       // if sum of 'arr' values at current and next index greater than 'result', set 'result' to sum of 'arr' values at current and next index
+//       result = arr[j] + arr[j + 1]
+//     }
+//   }
+//   // return 'result'
+//   return result
+// }
+// console.log(longestSubarray([1, 1, 0, 1])) // 3
+// console.log(longestSubarray([0, 1, 1, 1, 0, 1, 1, 0, 1])) // 5
+// console.log(longestSubarray([1, 1, 1])) // 2
